@@ -1,0 +1,23 @@
+<li>
+  <div class="card-body">
+    <% if mean_comment.user_id == current_user.id %>
+      <div class="text">
+        <%= form_with model: [@mean, mean_comment] do |f| %>
+          <%= f.text_area :body, rows: 5, cols:50 %>
+          <%= f.submit "コメントを編集" %>
+        <% end %>
+      </div>
+    <% else %>
+      <p>内容: <%= mean_comment.body %></p>
+    <% end %>
+    <p>投稿者: <%= link_to mean_comment.user.name, mypage_path %></p>
+    <p>投稿日時: <%= l mean_comment.created_at, format: :long %></p>
+    <% if mean_comment.user_id == current_user.id %>
+      <%= link_to mean_mean_comment_path(@mean, mean_comment), data: { turbo_method: :delete, turbo_confirm: "削除しますか？" } do %>
+        <i class="bi bi-trash"></i>
+        Delete
+      <% end %>
+    <% end %>
+    <hr>
+  </div>
+</li>

@@ -1,0 +1,179 @@
+<%= form_with model: [@diary, @stress_diagnosis], url: diary_stress_diagnosis_path(diary_id: @diary.id), data: { turbo_method: :post } do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.label :answer1 do %>
+      質問１　元気が無い。
+      <br>
+      <%= f.check_box :answer1, {}, true, false %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :answer2 do %>
+      質問2　怒りを感じたり、イライラしたりする。
+      <br>
+      <%= f.check_box :answer2, {}, true, false %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :answer3 do %>
+      質問3　ひどく疲れる。または、だるい。
+      <br>
+      <%= f.check_box :answer3, {}, true, false %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :answer4 do %>
+      質問4　気が張り詰めている。
+      <br>
+      <%= f.check_box :answer4, {}, true, false %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :answer5 do %>
+      質問5　不安を感じている。
+      <br>
+      <%= f.check_box :answer5, {}, true, false %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :answer6 do %>
+      質問6　心が落ち着かない。
+      <br>
+      <%= f.check_box :answer6, {}, true, false %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :answer7 do %>
+      質問7　気分が晴れない。
+      <br>
+      <%= f.check_box :answer7, {}, true, false %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :answer8 do %>
+      質問8　何をするのも面倒。
+      <br>
+      <%= f.check_box :answer8, {}, true, false %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :answer9 do %>
+      質問9　物事に集中できない。
+      <br>
+      <%= f.check_box :answer9, {}, true, false %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :answer10 do %>
+      質問10　人と関わるのが、億劫。
+      <br>
+      <%= f.check_box :answer10, {}, true, false %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :answer11 do %>
+      質問11　手のひらや脇に汗をかく。
+      <br>
+      <%= f.check_box :answer11, {}, true, false %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :answer12 do %>
+      質問12　手足が冷たい。
+      <br>
+      <%= f.check_box :answer12, {}, true, false %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :answer13 do %>
+      質問13　めまいがする。
+      <br>
+      <%= f.check_box :answer13, {}, true, false %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :answer14 do %>
+      質問14　体の節々や腰が痛む。
+      <br>
+      <%= f.check_box :answer14, {}, true, false %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :answer15 do %>
+      質問15　頭が重い。または、頭痛がする。
+      <br>
+      <%= f.check_box :answer15, {}, true, false %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :answer16 do %>
+      質問16　首筋や肩が凝る。
+      <br>
+      <%= f.check_box :answer16, {}, true, false %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :answer17 do %>
+      質問17　目が疲れる。
+      <br>
+      <%= f.check_box :answer17, {}, true, false %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :answer18 do %>
+      質問18　動悸や息切れがする。
+      <br>
+      <%= f.check_box :answer18, {}, true, false %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :answer19 do %>
+      質問19　胃腸の調子が悪い。または、便秘や下痢が多い。
+      <br>
+      <%= f.check_box :answer19, {}, true, false %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :answer20 do %>
+      質問20　食欲がない。
+      <br>
+      <%= f.check_box :answer20, {}, true, false %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :answer21 do %>
+      質問21　寝つきが悪い。または、夢をよく見る。
+      <br>
+      <%= f.check_box :answer21, {}, true, false %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :answer22 do %>
+      質問22　よく風邪をひく。
+      <br>
+      <%= f.check_box :answer22, {}, true, false %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :answer23 do %>
+      質問23　耳鳴りがする。
+      <br>
+      <%= f.check_box :answer23, {}, true, false %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :answer24 do %>
+      質問24　口の中の調子が悪い。
+      <br>
+      <%= f.check_box :answer24, {}, true, false %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :answer25 do %>
+      質問25　体重が減った。
+      <br>
+      <%= f.check_box :answer25, {}, true, false %>
+    <% end %>
+  </div>
+  <%= f.submit "幸福度診断へ進む" %>
+<% end %>

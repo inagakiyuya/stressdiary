@@ -1,0 +1,21 @@
+<%= form_with model: mean, local: true do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="form-group">
+    <%= f.label :"タイトル" %>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :"ストレスを感じた状況" %>
+    <%= f.text_area :situation, class: 'form-control', rows: 3 %>
+  </div>
+  <div class="form-group">
+    <%= f.label :"ストレスを取り除くために行なったこと" %>
+    <%= f.text_area :approach, class: 'form-control', rows: 3 %>
+  </div>
+  <div class="form-group">
+    <%= f.label :"行動をした結果" %>
+    <%= f.text_area :result, class: 'form-control', rows: 3 %>
+  </div>
+
+  <%= f.submit 'ストレス解消法を作成', class: 'btn btn-primary' %>
+<% end %>

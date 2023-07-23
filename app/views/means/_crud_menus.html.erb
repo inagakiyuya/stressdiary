@@ -1,0 +1,14 @@
+<ul class='crud-menu-btn list-inline float-right'>
+  <li class="list-inline-item">
+    <%= link_to edit_mean_path(mean), id: "button-edit-#{mean.id}" do %>
+      <i class="bi bi-pen-fill"></i>
+      Edit
+    <% end %>
+  </li>
+  <li class="list-inline-item">
+    <%= link_to mean_path(mean), id: "button-delete-#{mean.id}", data: { turbo_method: :delete } do %>
+      <i class="bi bi-trash"></i>
+      Delete
+    <% end %>
+  </li>
+</ul>

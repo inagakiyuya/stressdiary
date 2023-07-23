@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="card mb-3">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      ストレス解消法詳細
+      <div class="text-center">
+        もらったいいねの数：<%= @mean.likes.count %>
+      </div>
+      <% if current_user&.mine?(@mean) %>
+        <div class="text-end">
+          <%= link_to edit_mean_path(@mean), class: 'btn btn-success btn-sm' do %>
+            <i class="bi bi-pen-fill"></i>
+            Edit
+          <% end %>
+          <%= link_to mean_path(@mean),
+                      class: 'btn btn-danger btn-sm',
+                      data: { turbo_method: :delete,
+                      turbo_confirm: "ストレス解消法を削除します" } do %>
+             <i class="bi bi-trash"></i>
+             Delete
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div class="card-body h5">
+      <span class="badge bg-primary text-decoration-none text-white">
+        タイトル
+      </span>
+      <h2 class="h2">
+        <%= @mean.title %>
+      </h2>
+      <span class="badge bg-primary text-decoration-none text-white">
+        イライラしていた時の状況
+      </span>
+      <p><%= simple_format(@mean.situation) %></p>
+      <span class="badge bg-primary text-decoration-none text-white">
+        実践したストレス解消法
+      </span>
+      <p><%= simple_format(@mean.approach) %></p>
+      <span class="badge bg-primary text-decoration-none text-white">
+        結果
+      </span>
+      <p><%= simple_format(@mean.result) %></p>
+    </div>
+  </div>
+  <div class="card mb-3">
+    <div class="card-header">
+      コメント
+      <% if @mean.user_id == current_user.id %>
+        <div class="right-content">
+          <input type="button" value="コメントを表示・非表示" onclick="clickBtn1()">
+        </div>
+      <% end %>
+    </div>
+    <div id="hidden_box">
+      <div class="card-body">
+        <%= form_with model: [@mean, @mean_comment] do |f| %>
+          <%= render 'shared/error_messages', object: f.object %>
+          <div class="mb-3">
+            <%= f.label :"本文" %>
+            <%= f.text_area :body, rows: 5, class: 'form-control' %>
+          </div>
+          <%= f.submit "コメントを追加する", class: 'btn btn-primary' %>
+        <% end %>
+        <hr>
+        <div class="p-5">
+          <ul class="list-unstyled">
+            <%= render partial: 'means/mean_comment', collection: @mean.mean_comments.order(created_at: :desc) %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

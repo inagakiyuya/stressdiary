@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+      <h2>日記投稿詳細</h2>
+      <div class="text-right mb-3">
+        <%= link_to "削除", admin_diary_path(@diary), data: { turbo_method: :delete, turbo_confirm: "削除しますか？" }, class: 'btn btn-danger' %>
+      </div>
+      <table class="table table-bordered bg-white">
+        <tr>
+          <th scope="row">日記投稿ID</th>
+          <td><%= @diary.id %></td>
+        </tr>
+        <tr>
+          <th scope="row">タイトル</th>
+          <td><%= @diary.title %></td>
+        </tr>
+        <tr>
+          <th scope="row">ユーザー名</th>
+          <td><%= @diary.user.name %></td>
+        </tr>
+        <tr>
+          <th scope="row">今日一日でストレスを感じたこと</th>
+          <td><%= @diary.stress %></td>
+        </tr>
+        <tr>
+          <th scope="row">今日一日で嬉しかったこと</th>
+          <td><%= @diary.happy %></td>
+        </tr>
+        <tr>
+          <th scope="row">明日の目標</th>
+          <td><%= @diary.goal %></td>
+        </tr>
+        <tr>
+          <th scope="row">コメント</th>
+          <td>
+            <% @diary_comments.each do |comment| %>
+              <p><%= comment.body %></p>
+              <p>投稿者: <%= comment.user.name %></p>
+              <p>投稿日時: <%= l comment.created_at, format: :long %></p>
+              <hr>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">作成日時</th>
+          <td><%= l @diary.created_at, format: :long %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

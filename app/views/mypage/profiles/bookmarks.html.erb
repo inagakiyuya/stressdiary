@@ -1,0 +1,12 @@
+<!-- ブックマークされたストレス解消法一覧 -->
+<div class="row">
+  <div class="col-12">
+    <div class="row">
+      <% if @bookmark_means.present? %>
+        <%= render @bookmark_means %>
+      <% else %>
+        <p>　ブックマークをつけたストレス解消法はありません。</p>
+      <% end %>
+    </div>
+  </div>
+</div>

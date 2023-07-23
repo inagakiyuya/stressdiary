@@ -1,0 +1,35 @@
+<div class="col-sm-12 col-lg-4 mb-3">
+  <div id="mean-id-<%= mean.id %>">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">
+          <i class="bi bi-book"></i>
+          <%= link_to mean.title, mean_path(mean) %>
+        </h4>
+        <% if current_user.mine?(mean) %>
+          <%= render 'crud_menus', mean: mean %>
+        <% else %>
+          <%= render 'bookmark_button', mean: mean  %>
+        <% end %>
+        <%= render 'like_button', mean: mean %>
+        <ul class="list-inline">
+          <li class="list-inline-item">
+            <i class="bi bi-person"></i>
+            Name
+            <br>
+            <%= link_to mean.user.name, mypage_path(id: mean.user.id) %>
+          </li>
+          <li class="list-inline-item">
+            <i class="bi bi-calendar3"></i>
+            Created_at
+            <br>
+            <%= l mean.created_at, format: :long %>
+          </li>
+        </ul>
+        <p class="card-text">
+          <%= mean.approach %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

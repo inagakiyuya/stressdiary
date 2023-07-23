@@ -1,0 +1,18 @@
+<tr>
+  <td>
+    <%= diary.id %>
+  </td>
+  <td>
+    <%= link_to diary.title, admin_diary_path(diary) %>
+  </td>
+  <td>
+    <%= diary.user.name%>
+  </td>
+  <td>
+    <%= l diary.created_at, format: :long %>
+  </td>
+  <td>
+    <%= link_to "詳細", admin_diary_path(diary), class: 'btn btn-info' %>
+    <%= link_to "削除", admin_diary_path(diary), data: { turbo_method: :delete, turbo_confirm: "削除しますか？" }, class: 'btn btn-danger' %>
+  </td>
+</tr>

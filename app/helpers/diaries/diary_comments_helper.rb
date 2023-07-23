@@ -1,0 +1,2 @@
+module Diaries::DiaryCommentsHelper
+end

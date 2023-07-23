@@ -1,0 +1,18 @@
+<tr>
+  <td>
+    <%= mean.id %>
+  </td>
+  <td>
+    <%= link_to mean.title, admin_mean_path(mean) %>
+  </td>
+  <td>
+    <%= mean.user.name%>
+  </td>
+  <td>
+    <%= l mean.created_at, format: :long %>
+  </td>
+  <td>
+    <%= link_to "詳細", admin_mean_path(mean), class: 'btn btn-info' %>
+    <%= link_to "削除", admin_mean_path(mean), data: { turbo_method: :delete, turbo_confirm: "削除しますか？" }, class: 'btn btn-danger' %>
+  </td>
+</tr>

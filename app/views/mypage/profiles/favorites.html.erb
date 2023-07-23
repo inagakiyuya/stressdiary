@@ -1,0 +1,12 @@
+<!-- お気に入りの日記投稿 -->
+<div class="row">
+  <div class="col-12">
+    <div class="row">
+      <% if @favorite_diaries.present? %>
+        <%= render @favorite_diaries %>
+      <% else %>
+        <p>　お気に入りの日記投稿はありません。</p>
+      <% end %>
+    </div>
+  </div>
+</div>

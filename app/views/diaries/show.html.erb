@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="card mb-3">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      日記投稿詳細
+      <div class="text-center">
+        ストレス値：<%= @diary.stress_diagnosis.stress_count %>・
+        幸福度：<%= @diary.happy_diagnosis.happy_count %>・
+        もらった共感の数：<%= @diary.sympathies.count %>
+      </div>
+      <% if current_user&.mine?(@diary) %>
+        <div class="text-end">
+          <%= link_to diary_path(@diary),
+                      class: 'btn btn-danger btn-sm',
+                      data: { turbo_method: :delete,
+                      turbo_confirm: "日記を削除します" } do %>
+            <i class="bi bi-trash"></i>
+            Delete
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div class="card-body h5">
+      <span class="badge bg-primary text-decoration-none text-white">
+        タイトル
+      </span>
+      <h2 class="h2">
+        <%= @diary.title %>
+      </h2>
+      <span class="badge bg-primary text-decoration-none text-white">
+        一日の中でストレスに感じたこと
+      </span>
+      <p><%= simple_format(@diary.stress) %></p>
+      <span class="badge bg-primary text-decoration-none text-white">
+        一日の中で嬉しいと感じたこと
+      </span>
+      <p><%= simple_format(@diary.happy) %></p>
+      <span class="badge bg-primary text-decoration-none text-white">
+        明日の目標
+      </span>
+      <p><%= simple_format(@diary.goal) %></p>
+    </div>
+  </div>
+  <div class="card mb-3">
+    <div class="card-header">
+      コメント
+      <% if @diary.user_id == current_user.id %>
+        <div class="right-content">
+          <input type="button" value="コメントを表示・非表示" onclick="clickBtn1()">
+        </div>
+      <% end %>
+    </div>
+    <div id="hidden_box">
+      <div class="card-body">
+        <%= form_with model: [@diary, @diary_comment] do |f| %>
+          <%= render 'shared/error_messages', object: f.object %>
+          <div class="mb-3">
+            <%= f.label :"本文" %>
+            <%= f.text_area :body, rows: 5, class: 'form-control' %>
+          </div>
+          <%= f.submit "コメントを追加する", class: 'btn btn-primary' %>
+        <% end %>
+        <hr>
+        <div class="p-5">
+          <ul class="list-unstyled">
+            <%= render partial: 'diaries/diary_comment', collection: @diary.diary_comments.order(created_at: :desc) %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

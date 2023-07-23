@@ -1,0 +1,45 @@
+<div class="col-sm-12 col-lg-4 mb-3">
+  <div id="diary-id-<%= diary.id %>">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">
+          <i class="bi bi-journal-text"></i>
+          <%= link_to diary.title, diary_path(diary) %>
+        </h4>
+        <% if current_user.mine?(diary) %>
+          <%= render 'crud_menus', diary: diary %>
+        <% else %>
+          <%= render 'favorite_button', diary: diary %>
+        <% end %>
+        <%= render 'sympathy_button', diary: diary %>
+        <ul class="list-inline">
+          <li class="list-inline-item">
+            <i class="bi bi-person"></i>
+            Name
+            <br>
+            <%= diary.user.name %>
+          </li>
+          <li class="list-inline-item">
+            <i class="bi bi-calendar3"></i>
+            Created_at
+            <br>
+            <%= l diary.created_at, format: :long %>
+          </li>
+        </ul>
+        <p class="card-text">
+          <%= diary.stress %>
+        </p>
+        <p class="card-text">
+        <i class="bi bi-heartbreak"></i>
+          ストレス値
+          <%= diary.stress_diagnosis.stress_count %>
+        </p>
+        <p class="card-text">
+        <i class="bi bi-hearts"></i>
+          幸福度
+          <%= diary.happy_diagnosis.happy_count %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

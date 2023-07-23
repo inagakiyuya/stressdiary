@@ -1,0 +1,2 @@
+module Means::MeanCommentsHelper
+end

@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+      <h2>ストレス解消法詳細</h2>
+      <div class="text-right mb-3">
+        <%= link_to "削除", admin_mean_path(@mean), data: { turbo_method: :delete, turbo_confirm: "削除しますか？" }, class: 'btn btn-danger' %>
+      </div>
+      <table class="table table-bordered bg-white">
+        <tr>
+          <th scope="row">ストレス解消法ID</th>
+          <td><%= @mean.id %></td>
+        </tr>
+        <tr>
+          <th scope="row">タイトル</th>
+          <td><%= @mean.title %></td>
+        </tr>
+        <tr>
+          <th scope="row">ユーザー名</th>
+          <td><%= @mean.user.name %></td>
+        </tr>
+        <tr>
+          <th scope="row">ストレスを感じていた時の状況</th>
+          <td><%= @mean.situation %></td>
+        </tr>
+        <tr>
+          <th scope="row">ストレスを解消するために行った方法</th>
+          <td><%= @mean.approach %></td>
+        </tr>
+        <tr>
+          <th scope="row">ストレス解消法を行った結果</th>
+          <td><%= @mean.result %></td>
+        </tr>
+        <tr>
+          <th scope="row">コメント</th>
+          <td>
+            <% @mean_comments.each do |comment| %>
+              <p><%= comment.body %></p>
+              <p>投稿者: <%= comment.user.name %></p>
+              <p>投稿日時: <%= l comment.created_at, format: :long %></p>
+              <hr>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">作成日時</th>
+          <td><%= l @mean.created_at, format: :long %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
