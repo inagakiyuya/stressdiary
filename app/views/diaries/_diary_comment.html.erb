@@ -1,21 +1,27 @@
 <li>
   <div class="card-body">
-    <% if diary_comment.user_id == current_user.id %>
-      <div class="text">
-        <%= form_with model: [@diary, diary_comment] do |f| %>
-          <%= f.text_area :body, rows: 5, cols:50 %>
-          <%= f.submit "コメントを編集" %>
-        <% end %>
-      </div>
+    <% if logged_in? %>
+      <% if diary_comment.user_id == current_user.id %>
+        <div class="text">
+          <%= form_with model: [@diary, diary_comment] do |f| %>
+            <%= f.text_area :body, rows: 5, cols:50 %>
+            <%= f.submit "コメントを編集" %>
+          <% end %>
+        </div>
+      <% else %>
+        <p>内容: <%= diary_comment.body %></p>
+      <% end %>
     <% else %>
       <p>内容: <%= diary_comment.body %></p>
     <% end %>
     <p>投稿者: <%= link_to diary_comment.user.name, mypage_path %></p>
     <p>投稿日時: <%= l diary_comment.created_at, format: :long %></p>
-    <% if diary_comment.user_id == current_user.id %>
-      <%= link_to diary_diary_comment_path(@diary, diary_comment), data: { turbo_method: :delete, turbo_confirm: "削除しますか？" } do %>
-        <i class="bi bi-trash"></i>
-        Delete
+    <% if logged_in? %>
+      <% if diary_comment.user_id == current_user.id %>
+        <%= link_to diary_diary_comment_path(@diary, diary_comment), data: { turbo_method: :delete, turbo_confirm: "削除しますか？" } do %>
+          <i class="bi bi-trash"></i>
+          Delete
+        <% end %>
       <% end %>
     <% end %>
     <hr>

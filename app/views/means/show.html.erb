@@ -5,20 +5,22 @@
       <div class="text-center">
         もらったいいねの数：<%= @mean.likes.count %>
       </div>
-      <% if current_user&.mine?(@mean) %>
-        <div class="text-end">
-          <%= link_to edit_mean_path(@mean), class: 'btn btn-success btn-sm' do %>
-            <i class="bi bi-pen-fill"></i>
-            Edit
-          <% end %>
-          <%= link_to mean_path(@mean),
-                      class: 'btn btn-danger btn-sm',
-                      data: { turbo_method: :delete,
-                      turbo_confirm: "ストレス解消法を削除します" } do %>
-             <i class="bi bi-trash"></i>
-             Delete
-          <% end %>
-        </div>
+      <% if logged_in? %>
+        <% if current_user&.mine?(@mean) %>
+          <div class="text-end">
+            <%= link_to edit_mean_path(@mean), class: 'btn btn-success btn-sm' do %>
+              <i class="bi bi-pen-fill"></i>
+              Edit
+            <% end %>
+            <%= link_to mean_path(@mean),
+                        class: 'btn btn-danger btn-sm',
+                        data: { turbo_method: :delete,
+                        turbo_confirm: "ストレス解消法を削除します" } do %>
+               <i class="bi bi-trash"></i>
+               Delete
+            <% end %>
+          </div>
+        <% end %>
       <% end %>
     </div>
     <div class="card-body h5">
@@ -45,10 +47,12 @@
   <div class="card mb-3">
     <div class="card-header">
       コメント
-      <% if @mean.user_id == current_user.id %>
-        <div class="right-content">
-          <input type="button" value="コメントを表示・非表示" onclick="clickBtn1()">
-        </div>
+      <% if logged_in? %>
+        <% if @mean.user_id == current_user.id %>
+          <div class="right-content">
+            <input type="button" value="コメントを表示・非表示" onclick="clickBtn1()">
+          </div>
+        <% end %>
       <% end %>
     </div>
     <div id="hidden_box">

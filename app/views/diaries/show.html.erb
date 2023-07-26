@@ -7,16 +7,18 @@
         幸福度：<%= @diary.happy_diagnosis.happy_count %>・
         もらった共感の数：<%= @diary.sympathies.count %>
       </div>
-      <% if current_user&.mine?(@diary) %>
-        <div class="text-end">
-          <%= link_to diary_path(@diary),
-                      class: 'btn btn-danger btn-sm',
-                      data: { turbo_method: :delete,
-                      turbo_confirm: "日記を削除します" } do %>
-            <i class="bi bi-trash"></i>
-            Delete
-          <% end %>
-        </div>
+      <% if logged_in? %>
+        <% if current_user&.mine?(@diary) %>
+          <div class="text-end">
+            <%= link_to diary_path(@diary),
+                        class: 'btn btn-danger btn-sm',
+                        data: { turbo_method: :delete,
+                        turbo_confirm: "日記を削除します" } do %>
+              <i class="bi bi-trash"></i>
+              Delete
+            <% end %>
+          </div>
+        <% end %>
       <% end %>
     </div>
     <div class="card-body h5">
@@ -43,10 +45,12 @@
   <div class="card mb-3">
     <div class="card-header">
       コメント
-      <% if @diary.user_id == current_user.id %>
-        <div class="right-content">
-          <input type="button" value="コメントを表示・非表示" onclick="clickBtn1()">
-        </div>
+      <% if logged_in?%>
+        <% if @diary.user_id == current_user.id %>
+          <div class="right-content">
+            <input type="button" value="コメントを表示・非表示" onclick="clickBtn1()">
+          </div>
+        <% end %>
       <% end %>
     </div>
     <div id="hidden_box">
