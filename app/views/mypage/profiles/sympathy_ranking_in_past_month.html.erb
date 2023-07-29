@@ -1,0 +1,44 @@
+<div>
+  <h2>共感数ランキング　１ヶ月編</h2>
+  <div>
+    <th><%= link_to "共感数ランキング　１週間編", sympathy_ranking_in_past_week_mypage_profile_path, class: "btn btn-primary" %></th>
+    <th><%= link_to "共感数ランキング　１ヶ月編", sympathy_ranking_in_past_month_mypage_profile_path, class: "btn btn-primary" %></th>
+    <th><%= link_to "共感数ランキング　総合編", sympathy_ranking_mypage_profile_path, class: "btn btn-primary" %></th>
+  </div>
+  <div style="text-align: center;">
+    <table>
+      <tr>
+        <th>順位</th>
+        <th>ユーザー名</th>
+        <th>1ヶ月間に獲得した共感の累計数</th>
+      </tr>
+      <% @user_sympathy_ranks_in_past_month.each.with_index(1) do |user, i| %>
+        <% if i == 1 %>
+          <tr>
+            <th><%= image_tag("gold_crown.png", size: "48x48") %><%= i %>位</th>
+            <th><%= user.name %></th>
+            <th><%= user.total_sympathy_counts_in_past_month %></th>
+          </tr>
+        <% elsif i == 2 %>
+          <tr>
+            <th><%= image_tag("silver_crown.png", size: "48x48") %><%= i %>位</th>
+            <th><%= user.name %></th>
+            <th><%= user.total_sympathy_counts_in_past_month %></th>
+          </tr>
+        <% elsif i == 3 %>
+          <tr>
+            <th><%= image_tag("bronze_crown.png", size: "48x48") %><%= i %>位</th>
+            <th><%= user.name %></th>
+            <th><%= user.total_sympathy_counts_in_past_month %></th>
+          </tr>
+        <% else %>
+          <tr>
+            <td><%= i %>位</td>
+            <td><%= user.name %></td>
+            <td><%= user.total_sympathy_counts_in_past_month %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </table>
+  </div>
+</div>

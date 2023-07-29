@@ -1,0 +1,22 @@
+<form class="d-flex">
+  <%= search_form_for @m do |f| %>
+    <div class="row">
+      <div class="form-inline align-items-center mx-auto">
+        <div class="col-auto">
+          <%= f.search_field :title_cont, class: "form-control me-2", id: "search_field_of_mean", placeholder: "タイトル"%>
+        </div>
+        <div class="col-auto">
+          <%= f.date_field :created_at_gteq, class: "form-control me-2", id: "search_field_of_created_at_start" %>
+          <span>~</span>
+          <%= f.date_field :created_at_lteq_end_of_day, class: "form-control me-2", id: "search_field_of_created_at_end" %>
+        </div>
+        <div class="col-auto">
+          <%= f.search_field :user_name_cont, class: "form-control me-2", id: "search_field_of_user", placeholder: "ユーザー名"%>
+        </div>
+        <div class="col-auto">
+          <%= f.submit "Search", class: "btn btn-outline-success" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</form>

@@ -1,0 +1,80 @@
+<div class="left_content">
+  <!-- Side navbar -->
+  <nav class="navbar navbar-expand-md navbar-light shadow-sm mb-4 mb-lg-0 sidenav">
+    <!-- Menu -->
+    <a class="d-xl-none d-lg-none d-md-none text-inherit fw-bold" href="#">Menu</a>
+    <!-- Button -->
+    <button class="navbar-toggler d-md-none icon-shape icon-sm rounded bg-primary text-light" type="button" data-bs-toggle="collapse" data-bs-target="#sidenav" aria-controls="sidenav" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="bi bi-list"></i>
+    </button>
+    <!-- Collapse navbar -->
+    <div class="collapse navbar-collapse" id="sidenav">
+      <div class="navbar-nav flex-column">
+        <span class="navbar-header">Lists</span>
+        <!-- List -->
+        <ul class="list-unstyled ms-n2 mb-0">
+          <!-- Nav item -->
+          <%= link_to mypage_profile_path do %>
+            <i class="bi bi-person me-2"></i>
+            マイページ
+          <% end %>
+          <br>
+          <!-- Nav item -->
+          <%= link_to mymean_mypage_profile_path do %>
+            <i class="bi bi-journal-check"></i>
+            マイ・ストレス解消法一覧
+          <% end %>
+          <br>
+          <!-- Nav item -->
+          <%= link_to bookmarks_mypage_profile_path do %>
+            <i class="bi bi-bookmark-star-fill"></i>
+            ブックマークしたストレス解消法一覧
+          <% end %>
+          <br>
+          <!-- Nav item -->
+          <%= link_to mydiary_mypage_profile_path do %>
+            <i class="bi bi-journal-text"></i>
+            マイ・日記投稿一覧
+          <% end %>
+          <br>
+          <!-- Nav item -->
+          <%= link_to favorites_mypage_profile_path do %>
+            <i class="bi bi-bookmark-heart-fill"></i>
+            お気に入りの日記投稿一覧
+          <% end %>
+          <br>
+          <!-- Nav item -->
+          <%= link_to stress_chart_mypage_profile_path do %>
+            <i class="bi bi-heartbreak-fill"></i>
+            ストレス値変化の推移
+          <% end %>
+          <br>
+          <!-- Nav item -->
+          <%= link_to happy_chart_mypage_profile_path do %>
+            <i class="bi bi-person-hearts"></i>
+            幸福度変化の推移
+          <% end %>
+          <br>
+          <!-- Nav item -->
+          <%= link_to like_ranking_mypage_profile_path do %>
+            <i class="bi bi-bar-chart-line"></i>
+            いいねランキング一覧
+          <% end %>
+          <br>
+          <!-- Nav item -->
+          <%= link_to sympathy_ranking_mypage_profile_path do %>
+            <i class="bi bi-bar-chart-line-fill"></i>
+            共感ランキング一覧
+          <% end %>
+          <br>
+          <!-- Nav item -->
+          <li class="nav-item">
+            <%= link_to logout_path, class: 'nav-link', data: { turbo_method: :delete, turbo_confirm: 'ログアウトします' } do %>
+              <i class="bi bi-box-arrow-right me-2"></i>ログアウト
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>

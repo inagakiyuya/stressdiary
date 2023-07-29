@@ -1,0 +1,11 @@
+<% if current_user.like?(mean) %>
+  <%= link_to mean_like_path(mean), data: { turbo_method: :delete } do %>
+    <i class="bi bi-suit-heart-fill"></i>
+  <% end %>
+  <%= mean.likes.count %>
+<% else %>
+  <%= link_to mean_like_path(mean), data: { turbo_method: :post } do %>
+    <i class="bi bi-suit-heart"></i>
+  <% end %>
+  <%= mean.likes.count %>
+<% end %>

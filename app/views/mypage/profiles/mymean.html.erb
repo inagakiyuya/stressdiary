@@ -1,0 +1,12 @@
+<!-- 自分が投稿したストレス解消法一覧 -->
+<div class="row">
+  <div class="col-12">
+    <div class="row">
+      <% if @means.present? %>
+        <%= render @means %>
+      <% else %>
+        <p>　作成したストレス解消法はありません。</p>
+      <% end %>
+    </div>
+  </div>
+</div>

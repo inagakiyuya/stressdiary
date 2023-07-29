@@ -1,0 +1,2 @@
+module StressDiagnosesHelper
+end

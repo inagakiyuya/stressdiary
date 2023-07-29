@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+      <h2>被通報者詳細</h2>
+      <table class="table table-bordered bg-white">
+        <tr>
+          <th scope="row">被通報者ID</th>
+          <td><%= @report.reported_id %></td>
+        </tr>
+        <tr>
+          <th scope="row">被通報者名</th>
+          <td><%= @report.reported.name %></td>
+        </tr>
+        <tr>
+          <th scope="row">通報された回数</th>
+          <td><%= Report.where(reported_id: @report.reported_id).count %></td>
+        </tr>
+        <tr>
+          <th scope="row">通報者ID</th>
+          <td><%= @report.reporter_id %></td>
+        </tr>
+        <tr>
+          <th scope="row">通報者名</th>
+          <td><%= @report.reporter.name %></td>
+        </tr>
+        <tr>
+          <th scope="row">通報理由</th>
+          <td><%= @report.reason %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

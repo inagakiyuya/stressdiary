@@ -1,0 +1,13 @@
+<% if current_user.sympathy?(diary) %>
+  <%= link_to diary_sympathy_path(diary), data: { turbo_method: :delete } do %>
+    <i class="bi bi-heart-pulse-fill"></i>
+    共感できない....
+  <% end %>
+  <%= diary.sympathies.count %>
+<% else %>
+  <%= link_to diary_sympathy_path(diary), data: { turbo_method: :post } do %>
+    <i class="bi bi-heart-pulse"></i>
+    共感できる！
+  <% end %>
+  <%= diary.sympathies.count %>
+<% end %>

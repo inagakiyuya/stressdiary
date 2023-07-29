@@ -1,0 +1,11 @@
+<% if current_user.favorite?(diary) %>
+  <%= link_to diary_favorite_path(diary), data: { turbo_method: :delete } do %>
+    <i class="bi bi-bookmark-check-fill"></i>
+    UnFavorite
+  <% end %>
+<% else %>
+  <%= link_to diary_favorite_path(diary), data: { turbo_method: :post } do %>
+    <i class="bi bi-bookmark-check"></i>
+    Favorite
+  <% end %>
+<% end %>
