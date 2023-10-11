@@ -1,0 +1,10 @@
+<% if @diaries.any? %>
+  <div class="absolute w-full overflow-y-auto max-h-60 bg-white rounded-lg shadow-lg">
+    <% @diaries.limit(5).each do |diary| %>
+      <div class="p-2 border-b border-gray-300 hover:bg-gray-100">
+        タイトル名：<%= link_to diary.title, diary_path(diary), class: "text-blue-500" %> /
+        ユーザー名：<%= link_to diary.user.name, diary_path(diary), class: "text-blue-500" %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,16 @@
+.login {
+    background-image: url('login_sign_up.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.login input[type="text"],
+.login input[type="email"],
+.login input[type="password"],
+.login textarea {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    padding: 10px;
+}

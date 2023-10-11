@@ -1,0 +1,46 @@
+.index-means .card {
+    background-image: url('index_mean.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.show-means {
+    background-image: url('show_mean.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.mean-form {
+    background-image: url('mean_form.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    color: white;
+    padding: 20px;
+}
+
+.mean-form input[type="text"],
+.mean-form textarea {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    padding: 10px;
+}
+
+.pink-badge {
+    background-color: pink;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+
+.green-badge {
+    background-color: rgb(31, 220, 31);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+}

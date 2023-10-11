@@ -35,27 +35,11 @@ class Mypage::ProfilesController < Mypage::BaseController
   end
 
   def stress_chart
-    @diaries = current_user.diaries.includes(:stress_diagnosis)
-    @stress_datas = @diaries
-                    .joins(:stress_diagnosis)
-                    .where('diaries.created_at >= ?', 31.days.ago)
-                    .where('stress_diagnoses.stress_count >= ?', 0)
-                    .select("date(diaries.created_at) as date, stress_diagnoses.stress_count")
-                    .order("date ASC")
-                    .group_by { |d| d.date }
-                    .map { |date, rows| [date.to_s, rows.sum(&:stress_count)] }
+    @stress_datas = current_user.diaries.past_stress_diagnosis_datas            
   end
 
   def happy_chart
-    @diaries = current_user.diaries.includes(:happy_diagnosis)
-    @happy_datas = @diaries
-                   .joins(:happy_diagnosis)
-                   .where('diaries.created_at >= ?', 31.days.ago)
-                   .where('happy_diagnoses.happy_count >= ?', 0)
-                   .select("date(diaries.created_at) as date, happy_diagnoses.happy_count")
-                   .order("date ASC")
-                   .group_by { |d| d.date }
-                   .map { |date, rows| [date.to_s, rows.sum(&:happy_count)] }
+    @happy_datas = current_user.diaries.past_happy_diagnosis_datas
   end
 
   def like_ranking
@@ -88,10 +72,14 @@ class Mypage::ProfilesController < Mypage::BaseController
     @user_sympathy_ranks_in_past_week = User.all.order(total_sympathy_counts_in_past_week: :desc).limit(10)
   end
 
+  def show_recommended_means
+    @recommended_means = current_user.get_recommended_means
+  end
+
   private
 
   def profile_params
-    params.require(:user).permit(:name, :email, :password, :avatar, 
+    params.require(:user).permit(:name, :email, :password, :avatar, :hobby1, :hobby2, :hobby3,
                                  :total_sympathy_counts, :total_sympathy_counts_in_past_month, :total_sympathy_counts_in_past_week,
                                  :total_like_counts, :total_like_counts_in_past_month, :total_like_counts_in_past_week)
   end

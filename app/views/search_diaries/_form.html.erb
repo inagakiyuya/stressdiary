@@ -1,0 +1,25 @@
+<%= form_with(url: diaries_path, method: :get, class: "w-60", data: {
+    controller: "search",
+    action: "keyup->search#suggestions",
+    suggestions_url: search_diaries_suggestions_path,
+}) do |form| %>
+  <div>
+    <div class="form-inline align-items-center mx-auto">
+      <div class="col-auto"> 
+        <%= form.text_field :query, data: {
+                search_target: "input",
+                action: "blur->search#hideSuggestions",
+            },
+            class: "w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200",
+            placeholder: "Search...", autocomplete: "off" %>
+      </div>
+      <div class="col-auto">
+        <%= form.submit "Search", class: "btn btn-outline-success" %>
+      </div>
+    </div>
+    <div id="suggestions" class="absolute w-full mt-2 bg-white rounded-lg shadow-lg"
+        data-search-target="suggestions" data-action="mousedown->search#childClicked">
+      <%= render partial: "search_diaries/suggestions", locals: { diaries: @diaries } %>
+    </div>
+  </div>
+<% end %>

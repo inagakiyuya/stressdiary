@@ -1,44 +1,46 @@
-<div>
-  <h2>いいね数ランキング　1ヶ月編</h2>
-  <div>
-    <th><%= link_to "いいね数ランキング　１週間編", like_ranking_in_past_week_mypage_profile_path, class: "btn btn-primary" %></th>
-    <th><%= link_to "いいね数ランキング　１ヶ月編", like_ranking_in_past_month_mypage_profile_path, class: "btn btn-primary" %></th>
-    <th><%= link_to "いいね数ランキング　総合編", like_ranking_mypage_profile_path, class: "btn btn-primary" %></th>
-  </div>
+<div class="ranking">
   <div style="text-align: center;">
-    <table>
-      <tr>
-        <th>順位</th>
-        <th>ユーザー名</th>
-        <th>1ヶ月間に獲得したいいねの累計数</th>
-      </tr>
-      <% @user_like_ranks_in_past_month.each.with_index(1) do |user, i| %>
-        <% if i == 1 %>
-          <tr>
-            <th><%= image_tag("gold_crown.png", size: "48x48") %><%= i %>位</th>
-            <th><%= user.name %></th>
-            <th><%= user.total_like_counts_in_past_month %></th>
-          </tr>
-        <% elsif i == 2 %>
-          <tr>
-            <th><%= image_tag("silver_crown.png", size: "48x48") %><%= i %>位</th>
-            <th><%= user.name %></th>
-            <th><%= user.total_like_counts_in_past_month %></th>
-          </tr>
-        <% elsif i == 3 %>
-          <tr>
-            <th><%= image_tag("bronze_crown.png", size: "48x48") %><%= i %>位</th>
-            <th><%= user.name %></th>
-            <th><%= user.total_like_counts_in_past_month %></th>
-          </tr>
-        <% else %>
-          <tr>
-            <td><%= i %>位</td>
-            <td><%= user.name %></td>
-            <td><%= user.total_like_counts_in_past_month %></td>
-          </tr>
+    <h2>いいね数ランキング　1ヶ月編</h2>
+    <div>
+      <th><%= link_to "いいね数ランキング　１週間編", like_ranking_in_past_week_mypage_profile_ranking_path, class: "btn btn-primary" %></th>
+      <th><%= link_to "いいね数ランキング　１ヶ月編", like_ranking_in_past_month_mypage_profile_ranking_path, class: "btn btn-primary" %></th>
+      <th><%= link_to "いいね数ランキング　総合編", like_ranking_mypage_profile_ranking_path, class: "btn btn-primary" %></th>
+    </div>
+    <div style="text-align: center;">
+      <table style="margin: 0 auto;">
+        <tr>
+          <th>順位</th>
+          <th>ユーザー名</th>
+          <th>1ヶ月間に獲得したいいねの累計数</th>
+        </tr>
+        <% @user_like_ranks_in_past_month.each.with_index(1) do |user, i| %>
+          <% if i == 1 %>
+            <tr>
+              <th><%= image_tag("gold_crown.png", size: "48x48") %><%= i %>位</th>
+              <th><%= user.name %></th>
+              <th><%= user.total_like_counts_in_past_month %></th>
+            </tr>
+          <% elsif i == 2 %>
+            <tr>
+              <th><%= image_tag("silver_crown.png", size: "48x48") %><%= i %>位</th>
+              <th><%= user.name %></th>
+              <th><%= user.total_like_counts_in_past_month %></th>
+            </tr>
+          <% elsif i == 3 %>
+            <tr>
+              <th><%= image_tag("bronze_crown.png", size: "48x48") %><%= i %>位</th>
+              <th><%= user.name %></th>
+              <th><%= user.total_like_counts_in_past_month %></th>
+            </tr>
+          <% else %>
+            <tr>
+              <td><%= i %>位</td>
+              <td><%= user.name %></td>
+              <td><%= user.total_like_counts_in_past_month %></td>
+            </tr>
+          <% end %>
         <% end %>
-      <% end %>
-    </table>
+      </table>
+    </div>
   </div>
 </div>

@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
+  searchkick text_middle: [:name]
 
   has_many :means, dependent: :destroy
   has_many :mean_comments, dependent: :destroy
@@ -25,6 +26,7 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
+  validates :reset_password_token, presence: true, uniqueness: true, allow_nil: true
 
   validates :email, uniqueness: true
   validates :email, presence: true
@@ -160,9 +162,25 @@ class User < ApplicationRecord
     save
   end
 
-  private
+  def get_recommended_means
+    hobbies = [hobby1, hobby2, hobby3].compact
+    recommended_means = []
 
-  def self.ransackable_attributes(auth_object = nil)
-    ["name"]
+    if hobbies.present?
+      seen_categories = []
+
+      hobbies.each do |hobby|
+        mean = Mean.where(category: hobby)
+                   .where.not(user_id: id)
+                   .order(Arel.sql('RANDOM()'))
+                   .first
+        if mean.present? && !seen_categories.include?(mean.category)
+         recommended_means << mean
+         seen_categories << mean.category
+        end
+      end
+    end
+
+    recommended_means
   end
 end

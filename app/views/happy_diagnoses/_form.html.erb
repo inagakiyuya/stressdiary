@@ -1,75 +1,69 @@
-<%= form_with model: [@diary, @happy_diagnosis], url: diary_happy_diagnosis_path(diary_id: @diary.id), data: { turbo_method: :post } do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  <div class="field">
-    <%= f.label :question1 do %>
-      質問1　経済的に安定している。
-      <br>
-      <%= f.check_box :question1, {}, true, false %>
-    <% end %>
-  </div>
-  <div class="field">
-    <%= f.label :question2 do %>
-      質問2　人間関係は充実している。
-      <br>
-      <%= f.check_box :question2, {}, true, false %>
-    <% end %>
-  </div>
-  <div class="field">
-    <%= f.label :question3 do %>
-      質問3　人生は面白いと思う。
-      <br>
-      <%= f.check_box :question3, {}, true, false %>
-    <% end %>
-  </div>
-  <div class="field">
-    <%= f.label :question4 do %>
-      質問4　社会的な居場所がある。
-      <br>
-      <%= f.check_box :question4, {}, true, false %>
-    <% end %>
-  </div>
-  <div class="field">
-    <%= f.label :question5 do %>
-      質問5　あまり、イライラしない。または、怒らない。
-      <br>
-      <%= f.check_box :question5, {}, true, false %>
-    <% end %>
-  </div>
-  <div class="field">
-    <%= f.label :question6 do %>
-      質問6　自分を肯定できる。
-      <br>
-      <%= f.check_box :question6, {}, true, false %>
-    <% end %>
-  </div>
-  <div class="field">
-    <%= f.label :question7 do %>
-      質問7　没頭できるものがある。
-      <br>
-      <%= f.check_box :question7, {}, true, false %>
-    <% end %>
-  </div>
-  <div class="field">
-    <%= f.label :question8 do %>
-      質問8　仕事や勉強などにやりがいを感じる。
-      <br>
-      <%= f.check_box :question8, {}, true, false %>
-    <% end %>
-  </div>
-  <div class="field">
-    <%= f.label :question9 do %>
-      質問9　何事にも感謝の気持ちを持てる。
-      <br>
-      <%= f.check_box :question9, {}, true, false %>
-    <% end %>
-  </div>
-  <div class="field">
-    <%= f.label :question10 do %>
-      質問10　夢や目標がある。
-      <br>
-      <%= f.check_box :question10, {}, true, false %>
-    <% end %>
-  </div>
-
-  <%= f.submit "幸福度診断を終えて、日記を投稿する" %>
-<% end %>
+<div class="happy-form">
+  <%= form_with model: [@diary, @happy_diagnosis], url: diary_happy_diagnosis_path(diary_id: @diary.id), data: { turbo_method: :post } do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <ul class="ks-cboxtags">
+      <div class="field">
+        <li>
+          <%= f.check_box :question1, { checked: false }, "経済的に安定している。", false %>
+          <%= f.label :question1, "経済的に安定している。" %>
+        </li>
+      </div>
+      <div class="field">
+        <li>
+          <%= f.check_box :question2, { checked: false }, "人間関係は充実している。", false %>
+          <%= f.label :question2, "人間関係は充実している。" %>
+        </li>
+      </div>
+      <div class="field">
+        <li>
+          <%= f.check_box :question3, { checked: false }, "人生は面白いと思う。", false %>
+          <%= f.label :question3, "人生は面白いと思う。" %>
+        </li>
+      </div>
+      <div class="field">
+        <li>
+          <%= f.check_box :question4, { checked: false }, "社会的な居場所がある。", false %>
+          <%= f.label :question4, "社会的な居場所がある。" %>
+        </li>
+      </div>
+      <div class="field">
+        <li>
+          <%= f.check_box :question5, { checked: false }, "あまり、イライラしない。怒らない。", false %>
+          <%= f.label :question5, "あまり、イライラしない。怒らない。" %>
+        </li>
+      </div>
+      <div class="field">
+        <li>
+          <%= f.check_box :question6, { checked: false }, "自分を肯定できる。", false %>
+          <%= f.label :question6, "自分を肯定できる。" %>
+        </li>
+      </div>
+      <div class="field">
+        <li>
+          <%= f.check_box :question7, { checked: false }, "没頭できるものがある。", false %>
+          <%= f.label :question7, "没頭できるものがある。" %>
+        </li>
+      </div>
+      <div class="field">
+        <li>
+          <%= f.check_box :question8, { checked: false }, "仕事や勉強などにやりがいを感じる。", false %>
+          <%= f.label :question8, "仕事や勉強などにやりがいを感じる。" %>
+        </li>
+      </div>
+      <div class="field">
+        <li>
+          <%= f.check_box :question9, { checked: false }, "何事にも感謝の気持ちを持てる。", false %>
+          <%= f.label :question9, "何事にも感謝の気持ちを持てる。" %>
+        </li>
+      </div>
+      <div class="field">
+        <li>
+          <%= f.check_box :question10, { checked: false }, "夢や目標がある", false %>
+          <%= f.label :question10, "夢や目標がある" %>
+        </li>
+      </div>
+    </ul>
+  
+    <%= f.submit "幸福度診断を終えて、日記を投稿する" %>
+  <% end %>
+</div>

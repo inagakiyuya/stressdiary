@@ -2,7 +2,14 @@ class MeansController < ApplicationController
   before_action :require_login, only: %i[new create]
 
   def index
-    @means = @m.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page]).per(10)
+    @means = if params[:query].blank?
+               Mean.all.order(created_at: :desc).page(params[:page]).per(5)
+             else
+               Mean.joins(:user)
+                   .where("title LIKE ? OR approach LIKE ? OR category LIKE ? OR users.name LIKE ?",
+                          "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%")
+                   .order(created_at: :desc).page(params[:page]).per(5)
+             end
   end
 
   def new
@@ -11,11 +18,15 @@ class MeansController < ApplicationController
 
   def create
     @mean = current_user.means.new(mean_params)
-    if @mean.save
-      redirect_to mean_path(@mean), success: 'ストレス解消法を作成しました'
-    else
-      flash.now[:danger] = 'ストレス解消法を作成できませんでした'
-      render :new
+    
+    respond_to do |format|
+      if @mean.save
+        format.html { redirect_to mean_path(@mean), success: 'ストレス解消法を作成しました' }
+        format.json { render :show, status: :created, location: @mean }
+      else
+        format.html { render :new, danger: 'ストレス解消法を作成できませんでした' }
+        format.json { render json: @mean.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -31,23 +42,31 @@ class MeansController < ApplicationController
 
   def update
     @mean = current_user.means.find(params[:id])
-    if @mean.update(mean_params)
-      redirect_to mean_path(@mean), success: 'ストレス解消法を更新しました'
-    else
-      flash.now[:danger] = 'ストレス解消法を更新できませんでした'
-      render :edit
+
+    respond_to do |format|
+      if @mean.update(mean_params)
+        format.html { redirect_to mean_path(@mean), success: 'ストレス解消法を更新しました' }
+        format.json { render :show, status: :ok, location: @mean }
+      else
+        format.html { render :edit, danger: 'ストレス解消法を更新できませんでした' }
+        format.json { render json: @mean.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   def destroy
     @mean = current_user.means.find(params[:id])
     @mean.destroy!
-    redirect_to means_path, success: 'ストレス解消法を削除しました'
+
+    respond_to do |format|
+      format.html { redirect_to means_path, success: 'ストレス解消法を削除しました' }
+      format.json { head :no_content }
+    end
   end
 
   private
 
   def mean_params
-    params.require(:mean).permit(:title, :situation, :approach, :result)
+    params.require(:mean).permit(:title, :situation, :approach, :result, :category)
   end
 end

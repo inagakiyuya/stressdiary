@@ -1,21 +1,23 @@
-<%= form_with model: diary, local: true do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  <div class="form-group">
-    <%= f.label :"タイトル" %>
-    <%= f.text_field :title, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :"1日の中でストレスを感じたこと" %>
-    <%= f.text_area :stress, class: 'form-control', rows: 3 %>
-  </div>
-  <div class="form-group">
-    <%= f.label :"1日の中で嬉しいと思ったこと" %>
-    <%= f.text_area :happy, class: 'form-control', rows: 3 %>
-  </div>
-  <div class="form-group">
-    <%= f.label :"明日の目標" %>
-    <%= f.text_area :goal, class: 'form-control', rows: 3 %>
-  </div>
-
-  <%= f.submit "ストレス診断へ進む" %>
-<% end %>
+<div class="diary-form">
+  <%= form_with model: diary, local: true do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="form-group">
+      <%= f.label :"タイトル" %>
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :"1日の中でストレスを感じたこと" %>
+      <%= f.text_area :stress, class: 'form-control', rows: 3 %>
+    </div>
+    <div class="form-group">
+      <%= f.label :"1日の中で嬉しいと思ったこと" %>
+      <%= f.text_area :happy, class: 'form-control', rows: 3 %>
+    </div>
+    <div class="form-group">
+      <%= f.label :"明日の目標" %>
+      <%= f.text_area :goal, class: 'form-control', rows: 3 %>
+    </div>
+  
+    <%= f.submit "ストレス診断へ進む" %>
+  <% end %>
+</div>

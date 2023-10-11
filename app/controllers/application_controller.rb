@@ -1,18 +1,19 @@
+require 'line/bot'
+
 class ApplicationController < ActionController::Base
   add_flash_types :success, :info, :warning, :danger
-  before_action :require_login, :set_mean, :set_diary
+  before_action :require_login
 
   helper_method :current_user
 
+  def client
+    @client ||= Line::Bot::Client.new { |config|
+      config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
+      config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
+    }
+  end
+
   private
-
-  def set_mean
-    @m = Mean.ransack(params[:q])
-  end
-
-  def set_diary
-    @d = Diary.ransack(params[:q])
-  end
 
   def current_user
     @current_user ||= User.find_by(id: session[:user_id])

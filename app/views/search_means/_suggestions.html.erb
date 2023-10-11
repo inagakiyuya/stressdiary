@@ -1,0 +1,12 @@
+<% if @means.any? %>
+  <div class="absolute w-full overflow-y-auto max-h-60 bg-white rounded-lg shadow-lg">
+    <% @means.limit(5).each do |mean| %>
+      <div class="p-2 border-b border-gray-300 hover:bg-gray-100">
+        タイトル名：<%= link_to mean.title, mean_path(mean), class: "text-blue-500" %> /
+        方法：<%= link_to mean.approach, mean_path(mean), class: "text-blue-500" %> /
+        ユーザー名：<%= link_to mean.user.name, mean_path(mean), class: "text-blue-500" %> /
+        カテゴリー：<%= link_to mean.category, mean_path(mean), class: "text-blue-500" %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

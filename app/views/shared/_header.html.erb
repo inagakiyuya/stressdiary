@@ -12,6 +12,9 @@
           <li class="nav-item">
             <%= link_to 'ストレス解消法一覧', means_path, class: 'nav-link' %>
           </li>
+          <li class="nav-item">
+            <%= link_to 'TOPページ', root_path, class: 'nav-link' %>
+          </li>
         <% if current_user.present? %>
           <li class="nav-item">
             <%= link_to '日記投稿作成', new_diary_path, class: 'nav-link' %>
@@ -24,13 +27,6 @@
           </li>
           <li class="nav-item">
             <%= link_to 'ログアウト', logout_path, class: 'nav-link', data: { turbo_method: :delete, turbo_confirm: 'ログアウトします' } %>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to 'ユーザー登録', sign_up_path, class: 'nav-link' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'ログイン', login_path, class: 'nav-link' %>
           </li>
         <% end %>
       </ul>

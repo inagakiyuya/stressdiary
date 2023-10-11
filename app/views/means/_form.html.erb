@@ -1,21 +1,28 @@
-<%= form_with model: mean, local: true do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  <div class="form-group">
-    <%= f.label :"タイトル" %>
-    <%= f.text_field :title, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :"ストレスを感じた状況" %>
-    <%= f.text_area :situation, class: 'form-control', rows: 3 %>
-  </div>
-  <div class="form-group">
-    <%= f.label :"ストレスを取り除くために行なったこと" %>
-    <%= f.text_area :approach, class: 'form-control', rows: 3 %>
-  </div>
-  <div class="form-group">
-    <%= f.label :"行動をした結果" %>
-    <%= f.text_area :result, class: 'form-control', rows: 3 %>
-  </div>
-
-  <%= f.submit 'ストレス解消法を作成', class: 'btn btn-primary' %>
-<% end %>
+<div class="mean-form">
+  <%= form_with model: mean, local: true do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <p>カテゴリータグ</p>
+    <%= f.select :category, [["グルメ", "グルメ"], ["スポーツ", "スポーツ"], ["ゲーム", "ゲーム"],
+                            ["旅行・お出かけ", "旅行・お出かけ"], ["読書・漫画", "読書・漫画"], ["映画・動画", "映画・動画"],
+                            ["音楽", "音楽"], ["その他・屋内", "その他・屋内"], ["その他・屋外", "その他・屋外"]], include_blank: "選択して下さい" %>
+    <br>
+    <div class="form-group">
+      <%= f.label :"タイトル" %>
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :"ストレスを感じた状況" %>
+      <%= f.text_area :situation, class: 'form-control', rows: 3 %>
+    </div>
+    <div class="form-group">
+      <%= f.label :"ストレスを取り除くために行なったこと" %>
+      <%= f.text_area :approach, class: 'form-control', rows: 3 %>
+    </div>
+    <div class="form-group">
+      <%= f.label :"行動をした結果" %>
+      <%= f.text_area :result, class: 'form-control', rows: 3 %>
+    </div>
+    
+    <%= f.submit 'ストレス解消法を作成', class: 'btn btn-primary' %>
+  <% end %>
+</div>

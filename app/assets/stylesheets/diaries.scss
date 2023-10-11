@@ -1,0 +1,31 @@
+.index-diaries .card {
+    background-image: url('index_diary.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.show-diaries {
+    background-image: url('show_diary.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.diary-form {
+    background-image: url('diary_form.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    color: white;
+    padding: 20px;
+}
+
+.diary-form input[type="text"],
+.diary-form textarea {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    padding: 10px;
+}

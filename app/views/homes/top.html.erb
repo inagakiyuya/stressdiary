@@ -1,0 +1,35 @@
+<body>
+  <div style="position: relative;">
+    <%= image_tag("top_page.jpg", style: "max-width: 100%; height: auto;") %>
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+      <h1>
+        <font color="white">ストレスを減らしたい、あなたに。</font>
+      </h1>
+      <h1>
+        <font color="white">ネガティブな感情を吐き出して、スッキリしましょう。</font>
+      </h1>
+      <table>
+        <tr>
+        <button>
+          <%= link_to sign_up_path, class: 'btn btn-outline-success' do %>
+            <i class="bi bi-person-plus"></i>
+            ユーザー登録
+          <% end %>
+        </button>
+        <button>
+          <%= link_to login_path, class: 'btn btn-outline-success' do %>
+            <i class="bi bi-person-check"></i>
+            ログイン
+          <% end %>
+        </button>
+        <button>
+          <%= link_to introduction_path, class: 'btn btn-outline-success' do %>
+            <i class="bi bi-file-slides-fill"></i>
+            アプリの利用方法
+          <% end %>
+        </button>
+        </tr>
+      </table>
+    </div>
+  </div>
+</body>

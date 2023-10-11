@@ -1,0 +1,52 @@
+.ranking {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-image: url('show_ranking.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.recommended {
+  background-image: url('/assets/show_mean.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.green-badge {
+  background-color: rgb(31, 220, 31);
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.hobby {
+  display: flex;
+}
+
+.index-means .card {
+  background-image: url('index_mean.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.index-diaries .card {
+  background-image: url('index_diary.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.sidebar {
+  background-color: #c7e8c1;
+}
+
+.profile {
+  background-color: #c7e8c1;
+}

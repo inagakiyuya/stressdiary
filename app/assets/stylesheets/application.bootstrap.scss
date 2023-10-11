@@ -1,2 +1,12 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+@import '@fortawesome/fontawesome-free/scss/fontawesome';
+@import '@fortawesome/fontawesome-free/scss/solid';
+@import '@fortawesome/fontawesome-free/scss/brands';
+@import 'users';
+@import 'user_sessions';
+@import 'mypage';
+@import 'means';
+@import 'diaries';
+@import 'stress_diagnoses';
+@import 'happy_diagnoses';

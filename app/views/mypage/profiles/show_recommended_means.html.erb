@@ -1,0 +1,47 @@
+<div>
+  <div>
+    <h2><%= current_user.name%>さんにおすすめのストレス解消法</h2>
+  </div>
+
+  <% if @recommended_means.present? %>
+    <% @recommended_means.each do |mean| %>
+      <div class="col-sm-12 col-lg-10 mb-3">
+        <div class="card">
+          <div class="card-body recommended">
+            <h4 class="card-title">
+              <i class="bi bi-book"></i>
+              <%= link_to mean.title, mean_path(mean) %>
+            </h4>
+            <br>
+            <div>
+              カテゴリー :
+              <span class="green-badge">
+                <%= mean.category %>
+              </span>
+            </div>
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <i class="bi bi-person"></i>
+                Name
+                <br>
+                <%= link_to mean.user.name, mypage_path(id: mean.user.id) %>
+              </li>
+              <li class="list-inline-item">
+                <i class="bi bi-calendar3"></i>
+                Created_at
+                <br>
+                <%= l mean.created_at, format: :long %>
+              </li>
+            </ul>
+            <p class="card-text">
+              <%= mean.approach %>
+            </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <%= link_to '別のおすすめ投稿を紹介してもらう。', request.path, class: 'btn btn-outline-success' %>
+  <% else %>
+    <p>おすすめのストレス解消法はありません。</p>
+  <% end %>
+</div>

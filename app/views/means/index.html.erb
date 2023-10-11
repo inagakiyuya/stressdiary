@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-lg-10 offset-lg-1">
       <!-- 検索フォーム -->
-      <%= render 'search_form', url: means_path %>
+      <%= render partial: "search_means/form", locals: { means: [] } %>
     </div>
   </div>
 

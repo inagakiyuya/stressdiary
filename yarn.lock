@@ -1659,6 +1659,11 @@ static-module@^3.0.2:
     static-eval "^2.0.5"
     through2 "~2.0.3"
 
+stimulus-autocomplete@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/stimulus-autocomplete/-/stimulus-autocomplete-3.1.0.tgz#7c9292706556ed0a87abf60ea2688bf0ea1176a8"
+  integrity sha512-SmVViCdA8yCl99oV2kzllNOqYjx7wruY+1OjAVsDTkZMNFZG5j+SqDKHMYbu+dRFy/SWq/PParzwZHvLAgH+YA==
+
 string_decoder@~1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/string_decoder/-/string_decoder-1.1.1.tgz#9cf1611ba62685d7030ae9e4ba34149c3af03fc8"

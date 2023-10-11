@@ -31,7 +31,7 @@ gem "cssbundling-rails"
 gem "jbuilder"
 
 # Use Redis adapter to run Action Cable in production
-# gem "redis", "~> 4.0"
+gem "redis", "~> 4.0"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -46,25 +46,23 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 
 # Use Sass to process CSS
-# gem "sassc-rails"
+gem "sassc-rails"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-gem "image_processing", "~> 1.2"
 gem "sorcery"
-gem "ransack"
 gem "bootstrap"
 gem "font-awesome-sass"
 gem "jquery-rails"
-gem "faker"
 gem "draper"
-gem "mini_magick"
 gem "kaminari"
-gem "chartkick"
 gem "byebug"
+gem "config"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "faker"
+  gem 'letter_opener_web'
 end
 
 group :development do
@@ -86,3 +84,23 @@ group :test do
 end
 
 gem "dockerfile-rails", ">= 1.5", :group => :development
+
+# Add
+gem "mini_magick"
+gem "image_processing", "~> 1.2"
+
+# Add
+gem "chartkick"
+
+# Add
+gem "dotenv-rails"
+gem "line-bot-api"
+gem "line_notify"
+gem "activejob"
+gem "sidekiq"
+
+# gem "sidekiq-scheduler"
+
+# Add
+gem "searchkick"
+gem "opensearch-ruby"
