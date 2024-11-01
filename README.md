@@ -131,3 +131,10 @@ pull request時のコメント欄にURLを貼り付けました。
 ー Javascript
 ー Bootstrap
 ー fly.io
+
+ー password
+　ruby12345
+ー ユーザー名
+　まるい0号
+ー メールアドレス
+　email@example.com

@@ -1,0 +1,2 @@
+module SearchDiariesHelper
+end
